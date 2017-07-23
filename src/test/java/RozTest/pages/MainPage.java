@@ -1,11 +1,12 @@
 package RozTest.pages;
 
+import RozTest.settings.ChromeSettings;
 import org.apache.xpath.operations.String;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class MainPage {
+public class MainPage extends ChromeSettings {
     private WebDriver driver;
 
     public MainPage(WebDriver driver) { this.driver = driver; }
@@ -19,27 +20,27 @@ public class MainPage {
         driver.findElement(signInButton).click();
     }
 
-    public void typeEmail( String userEmail){
+    public void typeEmail(String email){
         WebElement login = driver.findElement(emailTxt);
         login.click();
         login.clear();
-        login.sendKeys((CharSequence) userEmail);
+        login.sendKeys( (CharSequence) email );
     }
 
-    public void typePassword( String userPassword){
+    public void typePassword(String password){
         WebElement login = driver.findElement(passTxt);
         login.click();
         login.clear();
-        login.sendKeys((CharSequence) userPassword);
+        login.sendKeys( (CharSequence) password );
     }
 
     public void clickSubmitButton(){
         driver.findElement(submitButton).click();
     }
 
-    public void login ( String userEmail, String userPassword){
-        typeEmail(userEmail);
-        typePassword(userPassword);
+    public void login (String email, String password){
+        typeEmail(email);
+        typePassword(password);
         clickSubmitButton();
     }
 }

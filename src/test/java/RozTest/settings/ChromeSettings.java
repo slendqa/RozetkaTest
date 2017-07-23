@@ -1,13 +1,9 @@
 package RozTest.settings;
 
-import org.apache.xpath.operations.String;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.testng.mustache.StringChunk;
+import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,11 +11,13 @@ import java.util.concurrent.TimeUnit;
 public class ChromeSettings {
 
     protected WebDriver driver;
-    protected java.lang.String userEmail = "roztest@mailinator.com";
-    protected java.lang.String userPassword = "Password1";
+    protected String email = "roztest@mailinator.com";
+    protected String password = "Password1";
 
     @BeforeClass
     public void setUp(){
+        String property = System.getProperty( "user.dir" ) + "/driver/chromedriver.exe";
+        System.setProperty( "webdriver.chrome.driver", property );
         driver = new ChromeDriver();
         driver.get("https://rozetka.com.ua/");
         driver.manage().window().maximize();
