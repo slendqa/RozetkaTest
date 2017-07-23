@@ -2,6 +2,7 @@ package RozTest.settings;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -18,7 +19,9 @@ public class ChromeSettings {
     public void setUp(){
         String property = System.getProperty( "user.dir" ) + "/driver/chromedriver.exe";
         System.setProperty( "webdriver.chrome.driver", property );
+
         driver = new ChromeDriver();
+        driver.manage().deleteAllCookies();
         driver.get("https://rozetka.com.ua/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
