@@ -1,12 +1,10 @@
 package RozTest.pages;
 
-import RozTest.settings.ChromeSettings;
-import org.apache.xpath.operations.String;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class MainPage extends ChromeSettings {
+public class MainPage {
     private WebDriver driver;
 
     public MainPage(WebDriver driver) { this.driver = driver; }
@@ -24,7 +22,7 @@ public class MainPage extends ChromeSettings {
         WebElement login = driver.findElement(emailTxt);
         login.click();
         login.clear();
-        login.sendKeys( (CharSequence) email );
+        login.sendKeys(email);
     }
 
     public void typePassword(String password){
@@ -42,5 +40,6 @@ public class MainPage extends ChromeSettings {
         typeEmail(email);
         typePassword(password);
         clickSubmitButton();
+        System.out.println("Login is OK");
     }
 }
